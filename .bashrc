@@ -1,4 +1,3 @@
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -61,11 +60,15 @@ fi
 if [ "$color_prompt" = yes ]; then
 #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
      PS1="\u\w \$:"
+
 else
 #    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
      PS1= "\u\w \$:"
 fi
 unset color_prompt force_color_prompt
+
+PROMPT_DIRTRIM=3
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -82,32 +85,27 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
+
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 alias wget="wget -c"
-alias sshserver='ssh -p 1024 aniket_patni@server.development.com'
-alias idea='~/idea-IU-141.1532.4/bin/idea.sh'
-alias sshaws='ssh -i /home/sariyan/Downloads/focus-aws.pem ec2-user@54.169.130.6'
 alias supo='sudo poweroff'
 alias sure='sudo reboot'
 alias suup='sudo apt update; sudo aptitude safe-upgrade'
-alias python='python3'
+alias myql='sudo mysql -uroot -p'
 alias sublime='subl'
+#alias python='python3'
+alias bpy3='python3 -m bpython'
+#alias pip='pip3'
+alias youtube-dl='youtube-dl --prefer-ffmpeg'
+alias gcc='gcc -std=c99'
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias mci="mvn clean install -f"
-alias mcid="mvn clean install -DskipTests -f"
-alias mcp="mvn clean package -f"
-alias mcpd="mvn clean package -DskipTests -f"
-alias mcd="mvn clean deploy -f"
-alias mcdd="mvn clean deploy -DskipTests -f"
-alias youtube-dl='youtube-dl --prefer-ffmpeg'
-alias myql='sudo /etc/init.d/mysql stop; sudo /etc/init.d/mysql start; mysql -uroot -phogwarts'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -133,12 +131,33 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Sets the Mail Environment Variable
-MAIL=/var/spool/mail/sariyan && export MAIL
+export NVM_DIR="/home/saurabh/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$HOME/Documents/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/Documents/.rbenv/plugins/ruby-build/bin:$PATH"
+# added by Anaconda2 4.0.0 installer
+export PATH="/home/saurabh/anaconda2/bin:$PATH"
 
-export PATH=/home/sariyan/Documents/mongodb/bin:$PATH
+# added for the IndiQus Project
+#export NODE_ENV='varsha.local'
 
+# added for Go Language
+export PATH="$PATH:/usr/local/go/bin"
+export GOROOT="$HOME/go"
+export PATH="$PATH:$GOROOT/bin"
+
+alias youtube-dl='youtube-dl --prefer-ffmpeg'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/saurabh/Downloads/google-cloud-sdk/path.bash.inc ]; then
+  source '/home/saurabh/Downloads/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/saurabh/Downloads/google-cloud-sdk/completion.bash.inc ]; then
+  source '/home/saurabh/Downloads/google-cloud-sdk/completion.bash.inc'
+fi
+
+#Loads the ruby interpreter 
+source ~/.rvm/scripts/rvm
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
