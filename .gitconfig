@@ -1,0 +1,32 @@
+[user]
+	name = 'Saurabh Ariyan'
+	email = 'saurabhkumar380@gmail.com'
+[github]
+	user = 'saurabhariyan'
+[alias]
+	a = add
+	ca = commit -a
+	cam = commit -am
+	s = status
+	pom = push origin master
+	pog = push origin gh-pages
+	puom = pull origin master
+	puog = pull origin gh-pages
+	cob  = checkout -b
+[credentials]
+	helper = osxkeychain
+[diff]
+  tool = meld
+[difftool]
+  prompt = false
+[difftool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
+[merge]
+  tool = meld
+[mergetool]
+  prompt = false
+[mergetool "meld"]
+  trustExitCode = true
+  cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+
